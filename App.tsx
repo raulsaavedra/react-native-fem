@@ -1,20 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Platform, SafeAreaView } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import {
+  createNativeStackNavigator,
+  NativeStackScreenProps,
+} from '@react-navigation/native-stack';
+import Colors from './src/screens/Colors';
+import { styled } from './src/stitches';
+import Home from './src/screens/Home';
+import SingleColor from './src/screens/SingleColor';
+
+const SSafeAreaView = styled(SafeAreaView, {
+  flex: 1,
+  backgroundColor: '#fff',
+});
+
+const Stack = createNativeStackNavigator();
+export type RootStackParamList = {
+  Home: undefined;
+  Colors: undefined;
+  Color: { colorHex: string; colorName: string };
+};
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SSafeAreaView>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Colors" component={Colors} />
+          <Stack.Screen name="Color" component={SingleColor} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SSafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
