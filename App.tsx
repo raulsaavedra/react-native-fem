@@ -8,6 +8,7 @@ import Colors from './src/screens/Colors';
 import { styled } from './src/stitches';
 import Home from './src/screens/Home';
 import SingleColor from './src/screens/SingleColor';
+import { TColor, TColorList } from './lib/types';
 
 const SSafeAreaView = styled(SafeAreaView, {
   flex: 1,
@@ -16,9 +17,9 @@ const SSafeAreaView = styled(SafeAreaView, {
 
 const Stack = createNativeStackNavigator();
 export type RootStackParamList = {
-  Home: undefined;
-  Colors: undefined;
-  Color: { colorHex: string; colorName: string };
+  Home: {};
+  Colors: { colorList: TColorList };
+  Color: { paletteName: string; color: TColor };
 };
 
 export default function App() {

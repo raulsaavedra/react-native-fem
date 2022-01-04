@@ -13,12 +13,13 @@ const SBackground = styled(View, {
   marginTop: 8,
 });
 export default function SingleColor({ route }: TProps) {
-  const { colorHex, colorName } = route.params;
+  const { paletteName, color } = route.params;
   return (
     <SContainer spaceTop>
-      <SText>Color Name: {colorName}</SText>
-      <SText>Color Code: {colorHex}</SText>
-      <SBackground css={{ backgroundColor: colorHex }} />
+      <SText>Color Palette: {paletteName}</SText>
+      <SText>Color Name: {color.colorName}</SText>
+      <SText>Color Code: {color.hexCode}</SText>
+      <SBackground css={{ backgroundColor: color.hexCode }} />
     </SContainer>
   );
 }
